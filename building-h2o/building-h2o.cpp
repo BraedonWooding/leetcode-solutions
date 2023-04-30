@@ -25,10 +25,9 @@ public:
     }
 
     void oxygen(function<void()> releaseOxygen) {
-    
-            std::unique_lock<std::mutex> lock(mtx);
-            cv.wait(lock, [this](){ return hydrogenCount == 0 && oxygenCount > 0; });
-            oxygenCount--;
+        std::unique_lock<std::mutex> lock(mtx);
+        cv.wait(lock, [this](){ return hydrogenCount == 0 && oxygenCount > 0; });
+        oxygenCount--;
 
         // releaseOxygen() outputs "O". Do not change or remove this line.
         releaseOxygen();
