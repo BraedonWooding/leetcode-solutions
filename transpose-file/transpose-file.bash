@@ -1,0 +1,2 @@
+# Read from the file file.txt and print its transposed content to stdout.
+for i in $(seq $(($(head -n 1 file.txt | tr -cd ' ' | wc -c) + 1))); do awk -v i=$i '{ printf "%s%s", sep, $i; sep=" " } END{ print "" }' file.txt; done
