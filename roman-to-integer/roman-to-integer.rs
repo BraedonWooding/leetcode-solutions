@@ -10,12 +10,12 @@ impl Solution {
         while let Some(firstChar) = iter.next() {
             result += match firstChar {
                 // before V & X
-                'I' => match iter.peek() {
-                    Some('V') => {
+                'I' => match iter.peek().unwrap_or(&' ') {
+                    'V' => {
                         iter.next();
                         5 - 1
                     },
-                    Some('X') => {
+                    'X' => {
                         iter.next();
                         10 - 1
                     },
@@ -24,12 +24,12 @@ impl Solution {
                 // 5/50/... can't be before other characters
                 'V' => 5,
                 // before L & C
-                'X' => match iter.peek() {
-                    Some('L') => {
+                'X' => match iter.peek().unwrap_or(&' ') {
+                    'L' => {
                         iter.next();
                         50 - 10
                     },
-                    Some('C') => {
+                    'C' => {
                         iter.next();
                         100 - 10
                     },
@@ -38,12 +38,12 @@ impl Solution {
                 // 5/50/... can't be before other characters
                 'L' => 50,
                 // can be before D or M
-                'C' => match iter.peek() {
-                    Some('D') => {
+                'C' => match iter.peek().unwrap_or(&' ') {
+                    'D' => {
                         iter.next();
                         500 - 100
                     },
-                    Some('M') => {
+                    'M' => {
                         iter.next();
                         1000 - 100
                     },
