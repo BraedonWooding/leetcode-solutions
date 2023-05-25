@@ -42,8 +42,6 @@ impl Solution {
             // }
         }
 
-        println!("{:?}", memoization);
-
         memoization[(k as usize)..=(n as usize)].iter().sum()
     }
 }
