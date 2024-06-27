@@ -21,8 +21,8 @@ public class Solution {
     public int GetMinimumDifference(TreeNode root) {
         if (root == null) return int.MaxValue;
 
-        // no need for abs, this node will become our largest value so it's > largestValueProcessed
         int diff = GetMinimumDifference(root.left);
+        // no need for abs, this node will become our largest value so it's > largestValueProcessed
         if (largestValueProcessed.HasValue) diff = Math.Min(diff, root.val - largestValueProcessed.Value);
         // now we can update our largest value since it would be "this node"
         largestValueProcessed = root.val;
