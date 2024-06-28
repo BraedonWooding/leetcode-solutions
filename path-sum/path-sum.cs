@@ -21,6 +21,7 @@ public class Solution {
         // target sum can be negative so we shouldn't do a sort of "optimization" to skip iteration if < 0
 
         // else we subtract our current node from the target sum then check either paths
-        return HasPathSum(root.left, targetSum - root.val) || HasPathSum(root.right, targetSum - root.val);
+        if (HasPathSum(root.left, targetSum - root.val)) return true;
+        return HasPathSum(root.right, targetSum - root.val);
     }
 }
