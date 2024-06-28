@@ -18,13 +18,6 @@ public class Solution {
             }
         }
 
-        for (int i = 0; i <= word1.Length; i++) {
-            for (int j = 0; j <= word2.Length; j++) {
-                Console.Write(dp[i, j]);
-            }
-            Console.WriteLine();
-        }
-
         return dp[word1.Length, word2.Length];
     }
 }
