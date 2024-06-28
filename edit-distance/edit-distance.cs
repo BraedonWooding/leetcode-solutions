@@ -5,23 +5,12 @@ public class Solution {
         // we can then use DP to calculate the cost, with the result being the bottom right corner (max row/col)
         var prevRow = new int[word2.Length + 1];
         var curRow = new int[word2.Length + 1];
-
-        Console.Write("   ");
-        for (int i = 0; i < word2.Length; i++) {
-            Console.Write(word2[i]);
-        }
-        Console.WriteLine();
-        Console.Write("  ");
         for (int i = 0; i <= word2.Length; i++) {
             prevRow[i] = i;
-            Console.Write(prevRow[i]);
         }
-        Console.WriteLine();
 
         for (int i = 1; i <= word1.Length; i++) {
-            Console.Write(word1[i - 1] + " ");
             curRow[0] = i;
-            Console.Write(curRow[0]);
             for (int j = 1; j <= word2.Length; j++) {
                 curRow[j] = Math.Min(
                     Math.Min(
@@ -30,9 +19,7 @@ public class Solution {
                     ),
                     prevRow[j - 1] + (word1[i - 1] == word2[j - 1] ? 0 : 1) // Substition
                 );
-                Console.Write(curRow[j]);
             }
-            Console.WriteLine();
             (prevRow, curRow) = (curRow, prevRow);
         }
 
