@@ -7,7 +7,6 @@ public class Solution {
         }
         // handle infinities
         if (n == int.MinValue) return (Math.Abs(x) == 1) ? 1 : 0;
-        if (n == int.MaxValue) return x;
 
         double result = 1;
         double product = x;
