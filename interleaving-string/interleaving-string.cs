@@ -1,6 +1,7 @@
 public class Solution {
     public bool IsInterleave(string s1, string s2, string s3) {
         if (s1.Length + s2.Length != s3.Length) return false;
+
         var dp = new bool[s1.Length + 1, s2.Length + 1];
         // base case empty strings work
         dp[0, 0] = true;
