@@ -13,6 +13,9 @@ public class Solution {
 
         for (int i = 0; i <= s1.Length; i++) {
             for (int j = 0; j <= s2.Length; j++) {
+                // we could make this faster by making the arrays one larger (i.e. +2)
+                // then by changing the || and && to be | / & so they don't have branches
+                // but honestly, the loops is what makes this slow
                 currentRow[j] = (
                     i > 0 && s3[i + j - 1] == s1[i - 1] && prevRow[j]
                 ) || (
