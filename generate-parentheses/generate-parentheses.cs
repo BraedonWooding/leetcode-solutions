@@ -1,6 +1,8 @@
 public class Solution {
     public IList<string> GenerateParenthesis(int n) {
-        var list = new List<string>();
+        // an optimization would be to calculate how many we will likely need
+        // in this case I'm just doing N * N
+        var list = new List<string>(n * n);
         Generate(list, "", 0, n);
         return list;
     }
