@@ -3,11 +3,12 @@ public class Solution {
         // re-use the matrix for this for a cheeky O(1)
         int m = matrix[0].Length;
         int max = 0;
+        int val;
         for (int i = matrix.Length - 1; i >= 0; i--) {
             for (int j = 0; j < m; j++) {
                 if (matrix[i][j] == '1') {
                     // no point updating cells that aren't 1
-                    int val = Math.Min(
+                    val = Math.Min(
                         j > 0 ? (matrix[i][j - 1] - '0') : 0,
                         Math.Min(
                             i < matrix.Length - 1 ? (matrix[i + 1][j] - '0') : 0,
