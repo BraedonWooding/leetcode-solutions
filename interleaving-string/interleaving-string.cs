@@ -23,13 +23,6 @@ public class Solution {
             }
         }
 
-        for (int i = 0; i <= s1.Length; i++) {
-            for (int j = 0; j <= s2.Length; j++) {
-                Console.Write((dp[i, j] ? 1 : 0) + " ");
-            }
-            Console.WriteLine();
-        }
-
         return dp[s1.Length, s2.Length];
     }
 }
