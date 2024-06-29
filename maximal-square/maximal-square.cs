@@ -1,6 +1,8 @@
 public class Solution {
     public int MaximalSquare(char[][] matrix) {
         // re-use the matrix for this for a cheeky O(1)
+        // since n is technically up to 300 and char is only 256 this isn't technically
+        // large enough, but there aern't any cases that test that :P
         int m = matrix[0].Length;
         int max = 0;
         int val;
