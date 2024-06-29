@@ -20,9 +20,7 @@ public class Solution {
                 if (j > 0 && s3[i + j - 1] == s2[j - 1]) {
                     currentRow[j] |= currentRow[j - 1];
                 }
-                Console.Write((currentRow[j] ? 1 : 0) + " ");
             }
-            Console.WriteLine();
             (prevRow, currentRow) = (currentRow, prevRow);
         }
 
