@@ -18,9 +18,7 @@ public class Solution {
                     matrix[i][j] = (char)('0' + val);
                     if (val > max) max = val;
                 }
-                Console.Write(matrix[i][j] + " ");
             }
-            Console.WriteLine();
         }
 
         return max * max;
