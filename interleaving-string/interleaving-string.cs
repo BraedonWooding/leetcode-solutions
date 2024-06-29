@@ -13,13 +13,11 @@ public class Solution {
 
         for (int i = 0; i <= s1.Length; i++) {
             for (int j = 0; j <= s2.Length; j++) {
-                if (i != 0 && j != 0) currentRow[j] = false;
-                if (i > 0 && s3[i + j - 1] == s1[i - 1]) {
-                    currentRow[j] = prevRow[j];
-                }
-                if (j > 0 && s3[i + j - 1] == s2[j - 1]) {
-                    currentRow[j] |= currentRow[j - 1];
-                }
+                currentRow[j] = (
+                    i > 0 && s3[i + j - 1] == s1[i - 1] && prevRow[j]
+                ) || (
+                    j > 0 && s3[i + j - 1] == s2[j - 1] && currentRow[j - 1]
+                ) || (i == 0 && j == 0);
             }
             (prevRow, currentRow) = (currentRow, prevRow);
         }
