@@ -5,7 +5,10 @@ public class Solution {
             x = 1 / x;
             n = -n;
         }
+        // handle infinities
         if (n == int.MinValue) return (Math.Abs(x) == 1) ? 1 : 0;
+        if (n == int.MaxValue) return x;
+
         double result = 1;
         double product = x;
         // given that its disible by 2 we can just keep building up our product
