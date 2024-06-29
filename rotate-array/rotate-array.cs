@@ -26,6 +26,8 @@ public class Solution {
         int currentIndex = 0;
         int currentValue = nums[0];
         int startingIndex = 0;
+        // we can guarantee that we'll visit every value at-least once
+        // because if we ever wrap around to the same starting value we shift it
         for (int i = 0; i < n; i++)
         {
             currentIndex = (currentIndex + k) % n;
