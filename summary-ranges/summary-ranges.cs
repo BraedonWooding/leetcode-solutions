@@ -2,7 +2,7 @@ public class Solution {
     public IList<string> SummaryRanges(int[] nums) {
         if (nums.Length == 0) return new List<string>();
 
-        var results = new List<string>();
+        var results = new List<string>(nums.Length);
         int rangeStart = 0;
         int rangeEnd = 0;
         int? lastValue = null;
