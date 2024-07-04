@@ -19,7 +19,6 @@ public class Solution {
     public TreeNode Helper(int[] nums, int start, int length) {
         if (length <= 0) return null;
         int middle = start + length / 2;
-        Console.WriteLine(start + " : " + length + " = " + middle);
         return new TreeNode(nums[middle], Helper(nums, start, middle - start), Helper(nums, middle + 1, (start + length) - middle - 1));
     }
 }
