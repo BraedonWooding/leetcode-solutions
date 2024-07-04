@@ -1,15 +1,17 @@
 public class Solution {
     public int LengthOfLIS(int[] nums) {
-        var dp = new int[nums.Length + 1];
-        dp[0] = 0;
-        int max = 0;
+        if (nums.Length == 0) return 0;
+
+        var dp = new int[nums.Length];
+        Array.Fill(dp, 1);
+        int max = 1;
         for (int i = 0; i < nums.Length; i++) {
-            dp[i + 1] = Enumerable.Range(0, i)
-                .Where(x => nums[x] < nums[i])
-                .Select(x => dp[x + 1] + 1)
-                .Concat(new int[]{1})
-                .Max();
-            if (dp[i + 1] > max) max = dp[i + 1];
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.Max(dp[i], dp[j] + 1);
+                    max = Math.Max(max, dp[i]);
+                }
+            }
         }
 
         return max;
