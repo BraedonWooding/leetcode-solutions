@@ -8,22 +8,16 @@ public class Solution {
         for (int i = 0; i < s.Length; i++) {
             dp[i, i] = 1;
         }
-        for (int i = 0; i < s.Length -1; i++) {
-            if (s[i] == s[i + 1]) {
-                dp[i, i + 1] = 2;
-                start = i;
-                maxLength = 2;
-            }
-        }
 
-        for (int len = 2; len < s.Length; len++) {
-            for (int i = 0; i < s.Length - len; i++) {
-                int end = i + len;
-                if (s[i] == s[end] && dp[i + 1, end - 1] > 0) {
-                    dp[i, end] = dp[i + 1, end - 1] + 1;
-                    if (len + 1 > maxLength) {
+        for (int len = 2; len <= s.Length; len++) {
+            for (int i = 0; i < s.Length - len + 1; i++) {
+                int j = i + len - 1;
+                // for len == 2 we handle the "even" case
+                if (s[i] == s[j] && (len == 2 || dp[i + 1, j - 1] > 0)) {
+                    dp[i, j] = len;
+                    if (len > maxLength) {
                         start = i;
-                        maxLength = len + 1;
+                        maxLength = len;
                     }
                 }
             }
