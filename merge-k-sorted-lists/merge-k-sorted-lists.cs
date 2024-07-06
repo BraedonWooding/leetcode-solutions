@@ -20,6 +20,7 @@ public class Solution {
                 if (lists[i] != null && (lowestNode == null || lowestNode.val > lists[i].val)) {
                     lowestNode = lists[i];
                     index = i;
+                    if (cur != null && (lowestNode.val <= cur.val)) break;
                 }
             }
 
