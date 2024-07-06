@@ -1,8 +1,5 @@
 public class Solution {
-    // this has extremely low memory usage (top 99%)
-    // because it reuses the passed in array to output the intervals
-    // it does this while being semi-efficient O(n) by using a 2-ptr approach
-    // where
+    // this has extremely low memory usage (top 99%) while also being in the top 95% of CPU
     // it further optimizes this 2-ptr approach 
     public int[][] Merge(int[][] intervals) {
         Array.Sort(intervals, static (a,b) => a[0] - b[0]);
