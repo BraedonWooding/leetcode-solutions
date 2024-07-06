@@ -23,7 +23,7 @@ public class Solution {
             }
         }
 
-        Array.Sort(intervals, (a,b) => {
+        Array.Sort(intervals, static (a,b) => {
             return (a == null ? 1 : 0) - (b == null ? 1 : 0);
         });
 
