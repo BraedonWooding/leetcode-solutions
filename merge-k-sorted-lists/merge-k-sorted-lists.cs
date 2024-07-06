@@ -13,15 +13,23 @@ public class Solution {
     public ListNode MergeKLists(ListNode[] lists) {
         ListNode head = null;
         ListNode cur = null;
-        while (true) {
-            ListNode lowestNode = null;
-            int index = -1;
-            for (int i = 0; i < lists.Length; i++) {
-                if (lists[i] != null && (lowestNode == null || lowestNode.val > lists[i].val)) {
-                    lowestNode = lists[i];
-                    index = i;
-                    if (cur != null && (lowestNode.val <= cur.val)) break;
+        int len = lists.Length;
+        while (len > 0) {
+            ListNode lowestNode = lists[0];
+            int lowest = (lists[0]?.val ?? int.MaxValue);
+            int index = 0;
+            for (int i = 1; i < len;) {
+                if (lists[i] == null) {
+                    lists[i] = lists[len - 1];
+                    len--;
                 }
+                else if (lowest > lists[i].val) {
+                    lowestNode = lists[i];
+                    lowest = lowestNode.val;
+                    index = i;
+                    if (lowest == cur?.val) break;
+                    i++;
+                } else i++;
             }
 
             // no more items
@@ -29,6 +37,11 @@ public class Solution {
             else {
                 lists[index] = lowestNode.next;
                 lowestNode.next = null;
+                if (lists[index] == null && len > 0) {
+                    len--;
+                    lists[index] = lists[len];
+                }
+
                 if (head == null) head = cur = lowestNode;
                 else cur = cur.next = lowestNode;
             }
