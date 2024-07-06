@@ -5,23 +5,20 @@ public class Solution {
     // where
     // it further optimizes this 2-ptr approach 
     public int[][] Merge(int[][] intervals) {
-        Array.Sort(intervals, (a,b) => a[0] - b[0]);
+        Array.Sort(intervals, static (a,b) => a[0] - b[0]);
 
         int[] prev = intervals[0];
-        // cache
-        int prevUpper = prev[1];
         int realLen = 1;
         for (int curPointer = 1; curPointer < intervals.Length; curPointer++) {
-            if (prevUpper >= intervals[curPointer][0]) {
+            if (prev[1] >= intervals[curPointer][0]) {
                 // update the array bounds
                 // note that the array might be something like [1, 4] and [2, 3] so we have to take the max
-                prevUpper = prev[1] = Math.Max(prevUpper, intervals[curPointer][1]);
+                prev[1] = Math.Max(prev[1], intervals[curPointer][1]);
                 // we no longer need these bounds so let's null them out and we'll compress at the end
                 intervals[curPointer] = null;
             }
             else {
                 prev = intervals[curPointer];
-                prevUpper = prev[1];
                 realLen++;
             }
         }
