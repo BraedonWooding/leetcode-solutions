@@ -25,23 +25,23 @@ public class Solution {
                 // 3, 2 = 4
                 // 3, 1 = 5
                 // 3, 0 = 6
-                ulong diagDownCol = (1ul << ((x) + (maxDiags - y)));
+                ulong diagDownCol = (1ul << (34 + (x) + (maxDiags - y)));
                 // 3, 3 = 0
                 // 3, 2 = 1
                 // 3, 1 = 2
                 // 3, 0 = 3
                 //
                 // 0, 0 = 6
-                ulong diagUpCol = (1ul << ((maxDiags - y) + (maxDiags - x)));
+                ulong diagUpCol = (1ul << (17 + (maxDiags - y) + (maxDiags - x)));
 
-                ulong col = (1ul << y);
+                ulong col = (1ul << (y + 9));
                 ulong row = (1ul << x);
 
                 ulong newBoardState = (
                     row |
-                    (col << 9) |
-                    (diagUpCol << 17) |
-                    (diagDownCol << 34)
+                    (col) |
+                    (diagUpCol) |
+                    (diagDownCol)
                 );
 
                 if ((board & newBoardState) == 0) {
