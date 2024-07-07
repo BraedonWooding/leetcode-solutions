@@ -23,9 +23,10 @@ public class Solution {
                 );
 
                 if ((board & newBoardState) == 0) {
+                    ulong savedBoard = board;
                     board |= newBoardState;
                     count += Solve(y + 1);
-                    board &= ~newBoardState;
+                    board = savedBoard;
                 }
             }
 
