@@ -41,7 +41,7 @@ public class Solution {
                     row |
                     (col << 9) |
                     (diagUpCol << 18) |
-                    (diagDownCol << 34)
+                    (diagDownCol << 33)
                 );
 
                 if ((board & newBoardState) == 0) {
