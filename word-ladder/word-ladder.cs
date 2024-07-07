@@ -35,7 +35,7 @@ public class Solution {
                 if (endWordVariations.Contains(variation)) return len + 1;
                 if (lookupNextWords.TryGetValue(variation, out var words)) {
                     foreach (var newWord in words) {
-                        if (newWord == word || !set.Contains(newWord)) continue;
+                        if (!set.Contains(newWord)) continue;
                         queue.Enqueue((newWord, len + 1));
                         set.Remove(newWord);
                     }
