@@ -44,9 +44,7 @@ public class Solution {
                     (diagDownCol << 44)
                 );
 
-                if (
-                    (board & newBoardState) == 0
-                ) {
+                if ((board & newBoardState) == 0) {
                     board |= newBoardState;
                     count += Solve(y + 1);
                     board &= ~newBoardState;
