@@ -5,17 +5,18 @@ public class Solution {
         // 64bit machine so we can efficiently store in 64 bit memory
         // board is structured like this;
         var board = 0UL;
-        ulong maxDiags = (ulong)(n - 1);
+        int maxDiags = n - 1;
+        int len = n;
 
-        int Solve(ulong y) {
-            if ((int)y == n) {
+        int Solve(int y) {
+            if (y == len) {
                 // we've got a queen in every position
                 return 1;
             }
 
             int count = 0;
 
-            for (ulong x = 0; x < (ulong)n; x++) {
+            for (int x = 0; x < len; x++) {
                 // 0, 3 = 0
                 // 0, 2 = 1
                 // 0, 1 = 2
@@ -25,17 +26,17 @@ public class Solution {
                 // 3, 2 = 4
                 // 3, 1 = 5
                 // 3, 0 = 6
-                ulong diagDownCol = (1ul << (int)((x) + (maxDiags - y)));
+                ulong diagDownCol = (1ul << ((x) + (maxDiags - y)));
                 // 3, 3 = 0
                 // 3, 2 = 1
                 // 3, 1 = 2
                 // 3, 0 = 3
                 //
                 // 0, 0 = 6
-                ulong diagUpCol = (1ul << (int)((maxDiags - y) + (maxDiags - x)));
+                ulong diagUpCol = (1ul << ((maxDiags - y) + (maxDiags - x)));
 
-                ulong col = (1ul << (int)(y));
-                ulong row = (1ul << (int)(x));
+                ulong col = (1ul << y);
+                ulong row = (1ul << x);
 
                 ulong newBoardState = (
                     row |
