@@ -39,14 +39,14 @@ public class Solution {
 
                 var newBoardState = (
                     row |
-                    (col << 10) |
+                    (col << 9) |
                     (diagUpCol << 24) |
                     (diagDownCol << 44)
                 );
 
                 if (
                     ((board & row) == 0) &&
-                    (((board >> 10) & col) == 0) &&
+                    (((board >> 9) & col) == 0) &&
                     (((board >> 24) & diagUpCol) == 0) &&
                     (((board >> 44) & diagDownCol) == 0)
                 ) {
