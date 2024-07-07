@@ -37,7 +37,7 @@ public class Solution {
                 ulong col = (1ul << (int)(y));
                 ulong row = (1ul << (int)(x));
 
-                var newBoardState = (
+                ulong newBoardState = (
                     row |
                     (col << 9) |
                     (diagUpCol << 24) |
@@ -45,10 +45,7 @@ public class Solution {
                 );
 
                 if (
-                    ((board & row) == 0) &&
-                    (((board >> 9) & col) == 0) &&
-                    (((board >> 24) & diagUpCol) == 0) &&
-                    (((board >> 44) & diagDownCol) == 0)
+                    (board & newBoardState) == 0
                 ) {
                     board |= newBoardState;
                     count += Solve(y + 1);
