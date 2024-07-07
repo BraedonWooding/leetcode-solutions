@@ -40,8 +40,8 @@ public class Solution {
                 ulong newBoardState = (
                     row |
                     (col << 9) |
-                    (diagUpCol << 18) |
-                    (diagDownCol << 33)
+                    (diagUpCol << 17) |
+                    (diagDownCol << 34)
                 );
 
                 if ((board & newBoardState) == 0) {
