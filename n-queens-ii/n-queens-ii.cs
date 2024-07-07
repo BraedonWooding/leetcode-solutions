@@ -1,10 +1,11 @@
 public class Solution {
-    public int STotalNQueens(int n) {
+    public int TotalNQueens(int n) {
         // n <= 9
         // 9 * 2 + (17 * 2) (or 36) bits of storage
         // 64bit machine so we can efficiently store in 64 bit memory
         // board is structured like this;
         var board = 0UL;
+        ulong maxDiags = (ulong)(n - 1);
 
         int Solve(ulong y) {
             if ((int)y == n) {
@@ -24,14 +25,14 @@ public class Solution {
                 // 3, 2 = 4
                 // 3, 1 = 5
                 // 3, 0 = 6
-                ulong diagDownCol = (1ul << (int)((x) + (3 - y)));
+                ulong diagDownCol = (1ul << (int)((x) + (maxDiags - y)));
                 // 3, 3 = 0
                 // 3, 2 = 1
                 // 3, 1 = 2
                 // 3, 0 = 3
                 //
                 // 0, 0 = 6
-                ulong diagUpCol = (1ul << (int)((3 - y) + (3 - x)));
+                ulong diagUpCol = (1ul << (int)((maxDiags - y) + (maxDiags - x)));
 
                 ulong col = (1ul << (int)(y));
                 ulong row = (1ul << (int)(x));
@@ -65,7 +66,7 @@ public class Solution {
         return Solve(0);
     }
 
-    public int TotalNQueens(int n) {
+    public int STotalNQueens(int n) {
         // up to 9 bits of storage so we can just store in 16 bits easily
         // keeping as 32 bits since more efficient on system
         var rows = 0u;
