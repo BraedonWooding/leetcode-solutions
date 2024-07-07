@@ -1,12 +1,8 @@
 public class Solution {
     public int TotalNQueens(int n) {
-        // n <= 9
-        // 9 * 2 + (17 * 2) (or 36) bits of storage
-        // 64bit machine so we can efficiently store in 64 bit memory
-        var board = 0UL;
         int maxDiags = n - 1;
 
-        int Solve(int y) {
+        int Solve(int y, ulong board) {
             if (y == n) {
                 // we've got a queen in every position
                 return 1;
@@ -23,17 +19,14 @@ public class Solution {
                 );
 
                 if ((board & newBoardState) == 0) {
-                    ulong savedBoard = board;
-                    board |= newBoardState;
-                    count += Solve(y + 1);
-                    board = savedBoard;
+                    count += Solve(y + 1, board | newBoardState);
                 }
             }
 
             return count;
         }
 
-        return Solve(0);
+        return Solve(0, 0);
     }
 
     public int STotalNQueens(int n) {
