@@ -5,7 +5,7 @@ public class Solution {
         void CombineBT(List<int> items, int start, int n, int k) {
             if (k == 0) {
                 // we can choose no more items
-                results.Add(items.ToList());
+                results.Add(new List<int>(items));
                 return;
             }
 
