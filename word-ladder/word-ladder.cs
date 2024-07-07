@@ -8,7 +8,7 @@ public class Solution {
 
         // precompute all the variations of each word (i.e. remove each character once)
         // we have to replace each char removed with an _
-        var lookup = new Dictionary<string, List<string>>();
+        var lookupNextWords = new Dictionary<string, List<string>>();
         var variations = new Dictionary<string, List<string>>();
         var endWordVariations = new HashSet<string>();
         foreach (var word in wordList.Append(beginWord)) {
@@ -16,7 +16,8 @@ public class Solution {
             for (int i = 0; i < word.Length; i++) {
                 var lookupWord = word[0..i] + "_" + word[(i + 1)..];
                 wordOptions.Add(lookupWord);
-                if (!lookup.TryGetValue(lookupWord, out var words)) words = lookup[lookupWord] = new();
+                if (!lookupNextWords.TryGetValue(lookupWord, out var words))
+                    words = lookupNextWords[lookupWord] = new();
                 words.Add(word);
             }
             variations[word] = wordOptions;
@@ -32,10 +33,10 @@ public class Solution {
             var (word, len) = queue.Dequeue();
             foreach (var variation in variations[word]) {
                 if (endWordVariations.Contains(variation)) return len + 1;
-                if (lookup.TryGetValue(variation, out var words)) {
+                if (lookupNextWords.TryGetValue(variation, out var words)) {
                     foreach (var newWord in words) {
                         if (newWord == endWord) return len + 1;
-                        if (newWord == word || set.Contains(newWord) == false) continue;
+                        if (newWord == word || !set.Contains(newWord)) continue;
                         queue.Enqueue((newWord, len + 1));
                         set.Remove(newWord);
                     }
