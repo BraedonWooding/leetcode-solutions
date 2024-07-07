@@ -5,17 +5,16 @@ public class Solution {
         // 64bit machine so we can efficiently store in 64 bit memory
         var board = 0UL;
         int maxDiags = n - 1;
-        int len = n;
 
         int Solve(int y) {
-            if (y == len) {
+            if (y == n) {
                 // we've got a queen in every position
                 return 1;
             }
 
             int count = 0;
 
-            for (int x = 0; x < len; x++) {
+            for (int x = 0; x < n; x++) {
                 ulong newBoardState = (
                     (1ul << x) | // row
                     (1ul << (y + 9)) | // col
