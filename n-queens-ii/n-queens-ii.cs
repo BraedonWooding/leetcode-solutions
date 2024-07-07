@@ -3,7 +3,6 @@ public class Solution {
         // n <= 9
         // 9 * 2 + (17 * 2) (or 36) bits of storage
         // 64bit machine so we can efficiently store in 64 bit memory
-        // board is structured like this;
         var board = 0UL;
         int maxDiags = n - 1;
         int len = n;
