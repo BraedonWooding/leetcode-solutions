@@ -50,10 +50,6 @@ public class Solution {
                     (((board >> 24) & diagUpCol) == 0) &&
                     (((board >> 44) & diagDownCol) == 0)
                 ) {
-                    if ((board & newBoardState) != 0) {
-                        Console.WriteLine("HUH");
-                    }
-
                     board |= newBoardState;
                     count += Solve(y + 1);
                     board &= ~newBoardState;
